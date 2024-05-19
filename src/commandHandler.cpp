@@ -2,8 +2,8 @@
 #include <array>
 #include <iostream>
 
-#include "commandHandler.h"
-#include "utils.h"
+#include "commandHandler.hpp"
+#include "utils.hpp"
 
 namespace POP {
     using namespace utils;
@@ -15,13 +15,26 @@ namespace POP {
         {
             case hash("help"):
                 return validityType::VALID;
-                
+
             case hash("remove"):
             case hash("install"):
                 return validityType::NOT_IMPL;
 
             default:
                 return validityType::INVALID;
+                break;
+            }
+        }
+
+        bool run(char *command, std::vector<char *> opts) {
+            switch (hash(command))
+            {
+            case hash("help"):
+                /* code */
+                break;
+
+            default:
+                return false;
                 break;
             }
         }
@@ -41,7 +54,7 @@ namespace POP {
                 std::cout << "That isn't a valid command!" << std::endl;
             } else if (valid == validityType::VALID) {
                 // TODO: actually handle the command
-                return true;
+                return run(command, options);
             }
 
             return false;
