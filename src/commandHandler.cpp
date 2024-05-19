@@ -1,9 +1,12 @@
 #include <vector>
 #include <array>
 #include <iostream>
+#include <algorithm>
 
 #include "commandHandler.hpp"
 #include "utils.hpp"
+
+#include "commands/help.hpp"
 
 namespace POP {
     using namespace utils;
@@ -30,12 +33,9 @@ namespace POP {
             switch (hash(command))
             {
             case hash("help"):
-                /* code */
-                break;
-
+                return POP::commands::help(opts, "");
             default:
                 return false;
-                break;
             }
         }
 
