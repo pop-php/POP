@@ -33,7 +33,7 @@ namespace POP {
             switch (hash(command))
             {
             case hash("help"):
-                return POP::commands::help(opts, "");
+                return POP::commands::help(opts, opts.size() >= 1 ? opts.at(0) : (char*)"");
             default:
                 return false;
             }
